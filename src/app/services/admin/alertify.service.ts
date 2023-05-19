@@ -28,7 +28,7 @@ export class AlertifyOptions{
   dismissOthers:boolean=false;   
 }
 export enum MessageType{
-  Eror="error",
+  Error="error",
   Message="message",
   Notify="notify",
   Success="success",
