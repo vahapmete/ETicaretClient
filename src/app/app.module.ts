@@ -10,11 +10,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './services/common/file-upload/file-upload.component';
+import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upload-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-   
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
