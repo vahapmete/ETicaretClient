@@ -22,6 +22,8 @@ import {
   FileUploadDialogState,
 } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogService } from '../dialog.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from 'src/app/base/base.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -35,9 +37,13 @@ export class FileUploadComponent {
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
     private dialogService: DialogService,
+    private spinner: NgxSpinnerService
   ) {}
-  @Input() options: Partial<FileUploadOptions>;
+  
+  
   public files: NgxFileDropEntry[] = [];
+  @Input() options: Partial<FileUploadOptions>;
+
 
   public selectedFiles(files: NgxFileDropEntry[]) {
     this.files = files;
@@ -48,9 +54,10 @@ export class FileUploadComponent {
       });
     }
     this.dialogService.openDialog({
-      componentType:FileUploadDialogComponent,
-      data:FileUploadDialogState,
-      afterClosed:() => {
+      componentType: FileUploadDialogComponent,
+      data: FileUploadDialogState,
+      afterClosed: () => {
+        this.spinner.show(SpinnerType.BallAtom);
         this.httpClientService
           .post(
             {
@@ -76,6 +83,7 @@ export class FileUploadComponent {
                   position: ToastrPosition.TopRight,
                 });
               }
+              this.spinner.hide(SpinnerType.BallAtom);
             },
             (errorResponse: HttpErrorResponse) => {
               const message = "Files couldn't be added!";
@@ -91,14 +99,12 @@ export class FileUploadComponent {
                   position: ToastrPosition.TopRight,
                 });
               }
+              this.spinner.hide(SpinnerType.BallAtom);
             }
           );
-      }
+      },
     });
-    
   }
-
-  
 }
 export class FileUploadOptions {
   controller?: string;
