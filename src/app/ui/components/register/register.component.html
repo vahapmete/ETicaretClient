@@ -1,0 +1,69 @@
+<div class="row m-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)" class="row g-3">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Firstname - Lastname</label>
+                <input type="text" formControlName="name" class="form-control" id="name" placeholder="name" [ngClass]="{'is-invalid':submitted && component.name.errors}">
+                <small *ngIf="submitted && component.name.errors?.required" class="form-text  text-danger">Name is required!</small>
+                <small *ngIf="submitted && (component.name.errors?.minlength || component.name.errors?.maxlength)" class="form-text  text-danger">Name should be between 3 and 50 characters!</small>
+            </div>
+            <div class="col-md-6">
+                <label for="userName" class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="userName" id="userName" placeholder="username" [ngClass]="{'is-invalid':submitted && component.userName.errors}">
+                <small *ngIf="submitted && component.userName.errors?.required" class="form-text  text-danger">Username is required!</small>
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email" [ngClass]="{'is-invalid':submitted && component.email.errors}">
+                <small *ngIf="submitted && component.email.errors?.required" class="form-text  text-danger">Email is required!</small>
+                <small *ngIf="submitted && component.email.errors?.email" class="form-text  text-danger">Check your email format please!</small>
+            </div>
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password" id="password" placeholder="password" [ngClass]="{'is-invalid':submitted && component.password.errors}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="rePassword" class="form-label">Repassword</label>
+                <input type="password" class="form-control" formControlName="rePassword" id="rePassword" placeholder="re password" [ngClass]="{'is-invalid':submitted && component.rePassword.errors}">
+                <small *ngIf="submitted && frm.hasError('notSame')" class="form-text  text-danger">Passwords are not same!</small>
+            </div>
+            <!-- <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+            </div>
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+            </div> -->
+            <!-- <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+                </div>
+            </div> -->
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>

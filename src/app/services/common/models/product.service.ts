@@ -5,6 +5,7 @@ import { HttpClientService } from '../http-client.service';
 import { List_Product } from 'src/app/contracts/list_product';
 import { Observable, firstValueFrom } from 'rxjs';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
+// import { Guid } from "guid-typescript";
 
 @Injectable({
   providedIn: 'root'
@@ -49,23 +50,22 @@ export class ProductService {
     await firstValueFrom(deleteObservable);
   }
   
-   async readImages(id:string,successCallBack?:()=>void):Promise<List_Product_Image[]>{
-    const getObservable:Observable<List_Product_Image[]> = this.httpClientService.get<List_Product_Image[]>({
-      action:"getproductimages",
-      controller:"products",
+  async readImages(id: string, successCallBack?: () => void): Promise<List_Product_Image[]> {
+    const getObservable: Observable<List_Product_Image[]> = this.httpClientService.get<List_Product_Image[]>({
+      action: "getproductimages",
+      controller: "products",
       queryString:`id=${id}`
-
     });
-    const images:List_Product_Image[]=await firstValueFrom(getObservable);
+    const images: List_Product_Image[] = await firstValueFrom(getObservable);
     successCallBack();
     return images;
-   }
-   async deleteImage(productId:string,imageId:string,successCallBack:()=>void){
+  }
+   async deleteImage(id:string,imageId:string,successCallBack:()=>void){
     const deleteObservable= await this.httpClientService.delete({
       action:"deleteProductImage",
       controller:"products",
       queryString:`imageId=${imageId}`
-    },productId);
+    },id);
     await firstValueFrom(deleteObservable);
     successCallBack();
    }
