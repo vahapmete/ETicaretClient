@@ -25,8 +25,8 @@
             </div>
 
             <div class="col-md-6">
-                <label for="rePassword" class="form-label">Repassword</label>
-                <input type="password" class="form-control" formControlName="rePassword" id="rePassword" placeholder="re password" [ngClass]="{'is-invalid':submitted && component.rePassword.errors}">
+                <label for="passwordConfirm" class="form-label">Repassword</label>
+                <input type="password" class="form-control" formControlName="passwordConfirm" id="passwordConfirm" placeholder="re password" [ngClass]="{'is-invalid':submitted && component.passwordConfirm.errors}">
                 <small *ngIf="submitted && frm.hasError('notSame')" class="form-text  text-danger">Passwords are not same!</small>
             </div>
             <!-- <div class="col-12">
