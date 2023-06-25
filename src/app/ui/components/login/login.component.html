@@ -1,24 +1,40 @@
 <div class="row m-5">
     <div class="col-md-2"></div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <!-- <form class="row g-3"> -->
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
 
-        <div class="col-md-6">
-            <label for="userName" class="form-label">Username</label>
-            <input #txtUsernameOrEmail type="text" class="form-control" id="userName" placeholder="username & email">
-            <!-- <small class="form-text  text-danger">Username is required!</small> -->
+                <label for="userName" class="form-label">Username</label>
+                <input #txtUsernameOrEmail type="text" class="form-control" id="userName" placeholder="username & email">
+                <!-- <small class="form-text  text-danger">Username is required!</small> -->
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <label for="password" class="form-label">Password</label>
+                <input #txtPassword type="password" class="form-control" id="password" placeholder="password">
+            </div>
+            <div class="col-md-2"></div>
         </div>
 
-        <div class="col-md-6">
-            <label for="password" class="form-label">Password</label>
-            <input #txtPassword type="password" class="form-control" id="password" placeholder="password">
-        </div>
 
 
-        <div class="col-12">
-            <button style="margin: 5px;" type="submit" class="btn btn-primary" (click)="login(txtUsernameOrEmail.value,txtPassword.value)">Sign In</button>
+        <div class="row">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8 " style="margin-top: 10px;">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary " (click)="login(txtUsernameOrEmail.value,txtPassword.value)">Sign In</button>
+                    <asl-google-signin-button logo_alignment="right" type="standard" size="medium"></asl-google-signin-button>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
         </div>
         <!-- </form> -->
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-2"></div>
 </div>

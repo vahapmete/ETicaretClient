@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" routerLink="">Mini E-Ticaret</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#1navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,17 +20,13 @@
                             <a class="nav-link active" aria-current="page" routerLink="basket">Basket</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" routerLink="register">Register</a>
+                            <a class="nav-link active" aria-current="page" routerLink="register" *ngIf="!authService.isAuthenticated">Register</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" routerLink="login">Login</a>
-                        </li>
+
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -48,8 +44,20 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <a routerLink="admin" class="btn btn-outline-primary m-1">Admin</a>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary m-1" aria-current="page" routerLink="login" *ngIf="!authService.isAuthenticated">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-secondary m-1" aria-current="page" (click)="signOut()" *ngIf="authService.isAuthenticated">Sign Out</a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="admin" class="btn btn-outline-primary m-1" *ngIf="authService.isAuthenticated">Admin</a>
+                        </li>
+                    </ul>
+
+
 
 
                 </div>
