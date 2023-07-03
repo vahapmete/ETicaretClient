@@ -22,6 +22,7 @@ export class AppComponent {
   }
   signOut(){
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken")
     this.authService.idendityCheck();
     this.router.navigate([""])
     this.toastrService.message("Signed out securely!","Signed out!",{

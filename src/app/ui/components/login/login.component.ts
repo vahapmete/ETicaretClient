@@ -17,7 +17,6 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
     super(spinner)
     socialAuthService.authState.subscribe(async (user:SocialUser)=>{
-      console.log(user);
       this.showSpinner(SpinnerType.BallAtom)
       await authService.googleLogin(user,()=>{
         this.authService.idendityCheck();
