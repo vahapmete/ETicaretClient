@@ -1,8 +1,45 @@
-<div class="card" style="width: 18rem;">
-    <img src="../../../../assets/product-default-image.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3" *ngFor="let product of products">
+            <div class="card" style="width: 18rem; float: left; margin: 5px;">
+
+                <img width="300" height="225" *ngIf="!product.productImageFiles.length" src="../../../../assets/product-default-image.jpg" class="card-img-top" alt="...">
+                <img width="300" height="225" *ngIf="product.productImageFiles.length" src="{{product.imagePath}}" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h3 class="card-title">{{product.name}}</h3>
+                    <p class="card-text">Price: {{product.price | currency}}
+                        <br/> Stock: {{product.stock}}</p>
+                    <a href="#" class="btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 m-1">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Previous">
+                           {{currentPageNo}}/{{totalPageCount}}
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Previous" [routerLink]="['/products',currentPageNo -1 <=0?1:currentPageNo-1]">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>...
+                    <li class="page-item" routerLinkActive="active" *ngFor="let pageNo of pageNumbersList"><a class="page-link" [routerLink]="['/products',pageNo]">{{pageNo}}</a></li>...
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next" [routerLink]="['/products',currentPageNo +1 >=totalPageCount?totalPageCount:currentPageNo+1]">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
